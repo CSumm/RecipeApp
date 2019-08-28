@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<div class="ui hidden divider"></div>
+<div class="main-class">
+  <div class="ui grid container">
+    <% recipes.forEach(function(recipe){ %>
+    <div class="three wide column">
+      <div class="ui card">
+        <a href="/recipe/<%=recipe._id %>" class="header"
+          ><p class="ui center aligned segment"><%= recipe.title %></p>
+          <img src="<%= recipe.image %>" alt="food-item" class="ui medium image"
+        /></a>
+
+        <p class="recipe-info ">
+          Ingredients:
+        </p>
+        <p class="recipe-info_ingredients"><%- recipe.ingredients %></p>
+        <p class="recipe-info">Instructions:</p>
+        <div class="recipe-info_instructions">
+          <p><%- recipe.instructions %></p>
+        </div>
+        <p class="recipe-info ">Cooking Time:</p>
+        <p class="recipe-info_cooking-time">
+          <%= recipe.cookingTime %> minutes
+        </p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<%include ../partials/footer %>

@@ -1,0 +1,57 @@
+<% include ../partials/header %>  
+<h1 class="ui center aligned header">Edit Recipe</h1>
+<div class="ui container">
+<form
+  class="ui form"
+  action="/recipe/<%=recipe._id %>?_method=PUT"
+  method="POST"
+>
+
+<div class="field">
+    <input
+      type="text"
+      placeholder="title"
+      value="<%= recipe.title %>"
+      name="recipe[title]"
+      required
+    />
+  </div>
+  <div class="field">
+    <input
+      type="text"
+      name="recipe[image]"
+      value="<%= recipe.image %>"
+      required
+    />
+  </div>
+  <div class="field">
+    <input
+      type="text"
+      placeholder="ingredients"
+      value="<%= recipe.ingredients %>"
+      name="recipe[ingredients]"
+      required
+    />
+  </div>
+  <textarea
+    class="field"
+    cols="50"
+    rows="20"
+    placeholder="instructions"
+    name="recipe[instructions]"
+    required
+  ><%= recipe.instructions %></textarea>
+  <div class="field">
+    <input
+      type="number"
+      placeholder="cooking time"
+      name="recipe[cookingTime]"
+      value="<%= recipe.cookingTime %>"
+      min="1"
+    />
+  </div>
+  <input class="large ui positive basic button right floated" type="submit" value="Update" />
+</form>
+<input class="medium ui negative basic button left floated" type=submit onclick="location.href='/recipe/<%=recipe._id %>';" value="Cancel" />
+</div>
+<% include ../partials/footer %>  

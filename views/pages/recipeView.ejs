@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+<div class="image-single">
+<img src="<%= recipe.image %>" alt="image" class="ui huge image">
+</div>
+<div class="recipe-box">
+        <h1 class="recipe-title"><%= recipe.title %></h1>
+        <p>By: <%= recipe.author.username %></p>
+        <p class="recipe-info ">
+                Ingredients:
+             </p>
+        <p>
+            <%- recipe.ingredients %>
+        </p>
+        <p class="recipe-info ">
+                Instructions:
+             </p>
+        <p><%- recipe.instructions %></p>
+        <p class="recipe-info ">
+                Cooking Time:
+             </p>
+        <p><%= recipe.cookingTime %> minutes</p>
+</div>
+<% if(currentUser && recipe.author.id.equals(currentUser.id)){ %>
+<div class="form-group">
+<form class="form submit-button" action="/recipe/<%=recipe._id %>/edit" method="GET">
+    <input type="submit" value="Update" class="ui inverted orange big button">
+</form> 
+<form class="form submit-button" action="/recipe/<%=recipe._id %>?_method=DELETE" method="POST"> 
+    <input type="submit" value="Delete" class="ui inverted red big button">
+</form>
+<% } %>
+</div>
+<% include ../partials/footer %>

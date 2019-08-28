@@ -1,0 +1,26 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+<div class="ui red huge inverted menu">
+    <div class="header item"><i class="lemon icon"></i>My Digital Recipe Book</div>
+        <a class="active item" href="/recipe/">Home</a>
+                <a class="item" href="/recipe/new"><i class="pencil alternate icon"></i>New recipe</a>
+      <div class="right menu">
+        <% if(!currentUser) { %>
+          <a class="item" href="/register">Register</a>
+        <a class="item" href="/login">Login</a>
+        <% } else { %>
+         <div class="header item"><i class="user circle icon"></i><%=currentUser.username %></div> 
+        <a class="item" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+ 
